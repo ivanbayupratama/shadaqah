@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\CompaignController;
+use App\Http\Controllers\Admin\RiwayatDonasiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,10 +17,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/compaign', [CompaignController::class, 'index']);
     Route::get('/compaign/create', [CompaignController::class, 'create']);
     Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
-    
-    Route::get('/riwayat-donasi', function(){
-        return view('admin.riwayat-donasi', ['title' => 'Riwayat Donasi']);
-    });
+
+    Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
+
     Route::get('/pencairan-dana', function(){
         return view('admin.pencairan-dana', ['title' => 'Pencairan Dana']);
     });
