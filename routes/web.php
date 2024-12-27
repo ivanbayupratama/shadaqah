@@ -15,6 +15,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/compaign', [CompaignController::class, 'index']);
     Route::get('/compaign/create', [CompaignController::class, 'create']);
+    Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
     
     Route::get('/riwayat-donasi', function(){
         return view('admin.riwayat-donasi', ['title' => 'Riwayat Donasi']);

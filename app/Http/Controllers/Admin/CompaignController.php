@@ -20,4 +20,11 @@ class CompaignController extends Controller
 
         return view('admin.compaign.create', compact('title'));
     }
+
+    public function edit($id)
+    {
+        $title = 'Beranda';
+        
+        return view('admin.compaign.edit', compact('title'));
+    }
 }
