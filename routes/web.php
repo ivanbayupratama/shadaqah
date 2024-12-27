@@ -20,6 +20,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
     Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
+    Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
     
     Route::get('/pencairan-dana', function(){
         return view('admin.pencairan-dana', ['title' => 'Pencairan Dana']);
