@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BerandaController;
 use App\Http\Controllers\Admin\CompaignController;
 use App\Http\Controllers\Admin\RiwayatDonasiController;
+use App\Http\Controllers\Admin\PencairanDanaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,9 +23,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
     Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
     
-    Route::get('/pencairan-dana', function(){
-        return view('admin.pencairan-dana', ['title' => 'Pencairan Dana']);
-    });
+    Route::get('/pencairan-dana', [PencairanDanaController::class, 'index']);
+
     Route::get('/pencairan-dana/metode-pencairan', function(){
         return view('admin.metode-pencairan', ['title' => 'Metode Pencairan']);
     }); 
