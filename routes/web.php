@@ -24,8 +24,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
     
     Route::get('/pencairan-dana', [PencairanDanaController::class, 'index']);
-
-    Route::get('/pencairan-dana/metode-pencairan', function(){
-        return view('admin.metode-pencairan', ['title' => 'Metode Pencairan']);
-    }); 
+    Route::get('/pencairan-dana/metode-pencairan', [PencairanDanaController::class, 'pencairan']);  
 });

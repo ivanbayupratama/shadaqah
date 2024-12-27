@@ -13,4 +13,11 @@ class PencairanDanaController extends Controller
 
         return view('admin.pencairan-dana.index', compact('title'));
     }
+
+    public function pencairan()
+    {
+        $title = 'Metode Pencairan';
+
+        return view('admin.pencairan-dana.metode-pencairan', compact('title'));
+    }
 }
