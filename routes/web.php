@@ -10,6 +10,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::get('/beranda', [BerandaController::class, 'index']);
     Route::get('/beranda/{id}', [BerandaController::class, 'show']);
+    Route::get('/beranda/{id}/pencairan-dana', [BerandaController::class, 'pencairan']);
     
     Route::get('/compaign', function(){
         return view('admin.compaign', ['title' => 'Compaign/Event']);

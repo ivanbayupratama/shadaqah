@@ -20,4 +20,11 @@ class BerandaController extends Controller
         
         return view('admin.beranda.show', compact('title'));
     }
+
+    public function pencairan($id)
+    {
+        $title = 'Beranda';
+
+        return view('admin.beranda.pencairan-dana', compact('title'));
+    }
 }
