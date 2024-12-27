@@ -13,4 +13,11 @@ class RiwayatDonasiController extends Controller
 
         return view('admin.riwayat-donasi.index', compact('title'));
     }
+
+    public function show($id)
+    {
+        $title = 'Riwayat Donasi';
+        
+        return view('admin.riwayat-donasi.show', compact('title'));
+    }
 }

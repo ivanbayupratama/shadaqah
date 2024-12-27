@@ -19,7 +19,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
 
     Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
-
+    Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
+    
     Route::get('/pencairan-dana', function(){
         return view('admin.pencairan-dana', ['title' => 'Pencairan Dana']);
     });
