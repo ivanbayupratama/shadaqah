@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BerandaController;
+use App\Http\Controllers\Admin\CompaignController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,10 +12,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/beranda', [BerandaController::class, 'index']);
     Route::get('/beranda/{id}', [BerandaController::class, 'show']);
     Route::get('/beranda/{id}/pencairan-dana', [BerandaController::class, 'pencairan']);
-    
-    Route::get('/compaign', function(){
-        return view('admin.compaign', ['title' => 'Compaign/Event']);
-    });
+
+    Route::get('/compaign', [CompaignController::class, 'index']);
+
     Route::get('/riwayat-donasi', function(){
         return view('admin.riwayat-donasi', ['title' => 'Riwayat Donasi']);
     });
