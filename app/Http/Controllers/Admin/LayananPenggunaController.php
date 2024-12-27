@@ -13,4 +13,11 @@ class LayananPenggunaController extends Controller
 
         return view('admin.layanan-pengguna.index', compact('title'));
     }
+
+    public function show($id)
+    {
+        $title = 'Layanan Pengguna';
+        
+        return view('admin.layanan-pengguna.show', compact('title'));
+    }
 }

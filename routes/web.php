@@ -28,4 +28,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/pencairan-dana/metode-pencairan', [PencairanDanaController::class, 'pencairan']); 
     
     Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'index']);
+    Route::get('/layanan-pengguna/{id}', [LayananPenggunaController::class, 'show']); 
 });
