@@ -14,7 +14,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/beranda/{id}/pencairan-dana', [BerandaController::class, 'pencairan']);
 
     Route::get('/compaign', [CompaignController::class, 'index']);
-
+    Route::get('/compaign/create', [CompaignController::class, 'create']);
+    
     Route::get('/riwayat-donasi', function(){
         return view('admin.riwayat-donasi', ['title' => 'Riwayat Donasi']);
     });

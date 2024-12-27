@@ -13,4 +13,11 @@ class CompaignController extends Controller
 
         return view('admin.compaign.index', compact('title'));
     }
+
+    public function create()
+    {
+        $title = 'Compaign';
+
+        return view('admin.compaign.create', compact('title'));
+    }
 }
