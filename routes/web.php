@@ -1,15 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BerandaController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/beranda', function(){
-        return view('admin.beranda', ['title' => 'Beranda']);
-    });
+    Route::get('/beranda', [BerandaController::class, 'index']);
+    
     Route::get('/compaign', function(){
         return view('admin.compaign', ['title' => 'Compaign/Event']);
     });
