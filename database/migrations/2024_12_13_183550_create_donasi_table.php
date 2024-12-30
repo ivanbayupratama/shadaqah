@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('jumlah_dana');
             $table->string('nama');
             $table->date('tgl_donasi');
-            $table->integer('no_hp');
         });
     }
 
