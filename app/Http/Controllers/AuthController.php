@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -48,5 +49,28 @@ class AuthController extends Controller
         }
 
         return back()->withErrors(['email' => 'Invalid credentials.']);
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        $authUser = User::firstOrCreate([
+            'email' => $user->email,
+        ], [
+            'name' => $user->name,
+            'provider' => 'google',
+            'provider_id' => $user->id,
+            'avatar' => $user->avatar,
+        ]);
+
+        Auth::login($authUser, true);
+
+        return redirect()->intended('/');
     }
 }
