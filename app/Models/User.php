@@ -11,18 +11,22 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    // Jika Anda ingin menyertakan nama tabel, pastikan menggunakan 'users'
+    //jika ingin menyertakan nama tabel, pastikan pakai 'users'
     protected $table = 'users';
 
-    // Kolom yang bisa diisi (mass assignable)
+    //kolom yang bisa diisi (mass assignable)
     protected $fillable = [
         'name',
         'email',
         'password',
+        'provider',
+        'provider_id',
+        'avatar',
     ];
 
-    // Menyembunyikan kolom tertentu saat data dikembalikan sebagai JSON
+    // mnyembunyikan kolom tertentu saat data dikembalikan sebagai JSON
     protected $hidden = [
         'password',
+        'remember_token',
     ];
 }

@@ -1,12 +1,10 @@
 @extends('layout.app')
 
-@section('title', 'Home')
+@section('title', 'Donasi')
 
 @section('content')
-    @include('banners.main-banner')
-
     <div id="app">
-        <Home :campaigns="{{ json_encode($campaigns) }}" :user="{{ json_encode($user) }}"></Home>
+        <DonationForm :campaign='@json($campaign)'></DonationForm>  <!-- Penulisan sesuai -->
     </div>
 @endsection
 
