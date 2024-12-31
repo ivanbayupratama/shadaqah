@@ -2,21 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WebController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WebController::class, 'home'])->name('home');
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
 
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
+Route::get('/about', [WebController::class, 'about'])->name('about');
 
-Route::get('/register', function () {
-    return view('registrasi'); // Mengarahkan ke halaman registrasi
-})->name('register');
+Route::get('/contact', [WebController::class, 'contact'])->name('contact');
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/register', [AuthController::class, 'showRegistForm'])->name('register.show');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
