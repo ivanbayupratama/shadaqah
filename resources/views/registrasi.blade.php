@@ -9,7 +9,8 @@
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-sm">
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Registrasi</h2>
-        <form class="space-y-4">
+        <form method ="POST" action="/register" class="space-y-4">
+            @csrf
             <!-- Nama Lengkap -->
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
@@ -35,7 +36,7 @@
             </div>
 
             <!-- Tombol Registrasi -->
-            <button type="button" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Daftar</button>
+            <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Daftar</button>
         </form>
 
         <!-- Link ke Login -->
