@@ -7,16 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login');
-
-Route::get('/register', function () {
-    return view('registrasi'); // Mengarahkan ke halaman registrasi
-})->name('register');
+Route::get('/register', [AuthController::class, 'showRegistForm'])->name('register.show');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
