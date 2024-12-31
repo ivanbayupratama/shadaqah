@@ -32,3 +32,5 @@ Route::post('/campaigns', [CampaignController::class, 'store'])->middleware('aut
 Route::get('/campaign/new', function () {
     return view('campaign');
 });
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
