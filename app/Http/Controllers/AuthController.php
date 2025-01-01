@@ -49,15 +49,13 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         if (Auth::attempt($credentials)) {
-            $token = $request->user()->createToken('authToken')->plainTextToken;
-            return response()->json(['message' => 'Login successful', 'token' => $token], 200);
+            // Authentication passed, redirect to intended page or home 
+            return redirect()->intended('/');
         }
-
-        return response()->json(['message' => 'Invalid credentials'], 401);
+        // Authentication failed, redirect back with error message 
+        return redirect()->back()->withErrors(['login' => 'Invalid credentials']);
     }
-
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();

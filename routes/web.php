@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\CompaignController;
 use App\Http\Controllers\Admin\RiwayatDonasiController;
 use App\Http\Controllers\Admin\PencairanDanaController;
 use App\Http\Controllers\Admin\LayananPenggunaController;
-=======
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\HomeController;
@@ -57,12 +56,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
     Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
     Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
-    
+
     Route::get('/pencairan-dana', [PencairanDanaController::class, 'index']);
-    Route::get('/pencairan-dana/metode-pencairan', [PencairanDanaController::class, 'pencairan']); 
-    
+    Route::get('/pencairan-dana/metode-pencairan', [PencairanDanaController::class, 'pencairan']);
+
     Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'index']);
-    Route::get('/layanan-pengguna/{id}', [LayananPenggunaController::class, 'show']); 
+    Route::get('/layanan-pengguna/{id}', [LayananPenggunaController::class, 'show']);
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -96,4 +95,3 @@ Route::get('/auth/google/callback', function () {
 
     return redirect()->intended('/');
 })->name('google.callback');
-
