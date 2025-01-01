@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -21,5 +21,8 @@
 
     {{-- Footer --}}
     @include('includes.footer')
+
+    {{-- Skrip yang di-push dari child views --}}
+    @stack('scripts')
 </body>
 </html>
