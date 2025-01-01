@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -58,8 +59,13 @@ class AuthController extends Controller
 
     public function handleGoogleCallback()
     {
-        $user = Socialite::driver('google')->user();
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/')->with('error', 'Login menggunakan Google gagal.');
+        }
 
+        // Temukan atau buat pengguna berdasarkan informasi Google
         $authUser = User::firstOrCreate([
             'email' => $user->email,
         ], [
@@ -67,6 +73,7 @@ class AuthController extends Controller
             'provider' => 'google',
             'provider_id' => $user->id,
             'avatar' => $user->avatar,
+            'password' => Hash::make(Str::random(16)), // Mengisi kolom password dengan nilai acak
         ]);
 
         Auth::login($authUser, true);

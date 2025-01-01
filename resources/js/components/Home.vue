@@ -87,3 +87,7 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+/* Gaya khusus untuk komponen Home */
+</style>

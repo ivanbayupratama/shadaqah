@@ -4,7 +4,7 @@
 
 @section('content')
     @include('banners.main-banner')
-
+    
     <div id="app">
         <Home :campaigns="{{ json_encode($campaigns) }}" :user="{{ json_encode($user) }}"></Home>
     </div>
