@@ -1,3 +1,6 @@
+
+import "flowbite";
+
 import { createApp } from "vue";
 import Home from "./components/Home.vue";
 import CampaignPage from "./components/CampaignPage.vue";
@@ -15,3 +18,4 @@ app.component("Home", Home);
 app.component("CampaignPage", CampaignPage);
 app.component("DonationForm", DonationForm); // Daftarkan komponen DonationForm
 app.mount("#app");
+

@@ -4,11 +4,19 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Admin\BerandaController;
+use App\Http\Controllers\Admin\CompaignController;
+use App\Http\Controllers\Admin\RiwayatDonasiController;
+use App\Http\Controllers\Admin\PencairanDanaController;
+use App\Http\Controllers\Admin\LayananPenggunaController;
+=======
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\CampaignController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -34,6 +42,27 @@ Route::post('/campaigns', [CampaignController::class, 'store'])->middleware('aut
 
 Route::get('/campaign/new', function () {
     return view('campaign');
+});
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/beranda', [BerandaController::class, 'index']);
+    Route::get('/beranda/{id}', [BerandaController::class, 'show']);
+    Route::get('/beranda/{id}/pencairan-dana', [BerandaController::class, 'pencairan']);
+
+    Route::get('/compaign', [CompaignController::class, 'index']);
+    Route::get('/compaign/create', [CompaignController::class, 'create']);
+    Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
+
+    Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
+    Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
+    Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
+    
+    Route::get('/pencairan-dana', [PencairanDanaController::class, 'index']);
+    Route::get('/pencairan-dana/metode-pencairan', [PencairanDanaController::class, 'pencairan']); 
+    
+    Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'index']);
+    Route::get('/layanan-pengguna/{id}', [LayananPenggunaController::class, 'show']); 
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -67,3 +96,4 @@ Route::get('/auth/google/callback', function () {
 
     return redirect()->intended('/');
 })->name('google.callback');
+
