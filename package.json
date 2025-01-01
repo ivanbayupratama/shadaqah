@@ -8,32 +8,23 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-vue": "^4.0.0",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "bootstrap": "^5.2.3",
         "concurrently": "^9.0.1",
         "flowbite": "^2.5.2",
-
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.49",
-        "tailwindcss": "^3.4.17",
-        "vite": "^6.0"
-    }
-
         "init": "^0.1.2",
         "laravel-mix": "^6.0.49",
-        "npx": "^3.0.0",
+        "laravel-vite-plugin": "^1.0.0",
+        "npx": "^10.2.2",
         "postcss": "^8.4.49",
         "sass": "^1.56.1",
         "tailwindcss": "^3.4.17",
+        "vite": "^4.0.0",
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "@vitejs/plugin-vue": "^4.0.0",
-        "flowbite": "^2.5.2",
-        "laravel-vite-plugin": "^1.1.1",
-        "vite": "^4.0.0"
-    },
-    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
-
+        "flowbite": "^2.5.2"
+    }
 }
