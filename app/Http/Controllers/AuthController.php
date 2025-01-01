@@ -49,13 +49,22 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+
         if (Auth::attempt($credentials)) {
-            // Authentication passed, redirect to intended page or home 
-            return redirect()->intended('/');
+            $user = Auth::user();
+            if ($user->role == 'admin') {
+                // Redirect to admin dashboard
+                return redirect()->intended('/admin/beranda');
+            } else {
+                // Redirect to home page
+                return redirect()->intended('/');
+            }
         }
-        // Authentication failed, redirect back with error message 
+
+        // Authentication failed, redirect back with error message
         return redirect()->back()->withErrors(['login' => 'Invalid credentials']);
     }
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
