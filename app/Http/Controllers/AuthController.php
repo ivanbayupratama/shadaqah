@@ -21,16 +21,21 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
+        // Simpan pengguna ke database
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('login.show')->with('success', 'Registration successful! Please login.');
+        // Kirim response berhasil
+        return response()->json([
+            'message' => 'User successfully registered!',
+            'user' => $user,
+        ], 201);
     }
 
     public function showLoginForm()
@@ -40,16 +45,17 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/')->with('success', 'Login successful!');
+        if (Auth::attempt($credentials)) {
+            $token = $request->user()->createToken('authToken')->plainTextToken;
+            return response()->json(['message' => 'Login successful', 'token' => $token], 200);
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials.']);
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
     public function redirectToGoogle()
