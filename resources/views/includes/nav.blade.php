@@ -9,11 +9,7 @@
                     <button @click="open = !open" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false">
                         <span class="sr-only">Open user menu</span>
                         <img
-                            @if (Auth::user()->provider === 'google')
-                                src="{{ Auth::user()->avatar }}"
-                            @else
-                                src="/path/to/default/avatar.png"
-                            @endif
+                            src="{{ Auth::user()->avatar ?? '/path/to/default/avatar.png' }}"
                             alt="User Avatar"
                             class="rounded-full w-8 h-8"
                         />

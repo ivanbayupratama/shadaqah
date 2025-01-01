@@ -25,16 +25,15 @@
 
             <!-- Tombol -->
             <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Login</button>
-            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 flex items-center justify-center space-x-2">
-                <!-- Logo Google -->
-                <img src="{{ asset('asset/google.png') }}" alt="Google Logo" class="w-6 h-6">
-
-                <!-- Teks -->
-                <span>Login dengan Google</span>
-            </button>
-
-            
         </form>
+
+        <!-- Tombol Login dengan Google -->
+        <a href="{{ route('google.login') }}" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 flex items-center justify-center space-x-2 mt-4">
+            <!-- Logo Google -->
+            <img src="{{ asset('asset/google.png') }}" alt="Google Logo" class="w-6 h-6">
+            <!-- Teks -->
+            <span>Login dengan Google</span>
+        </a>
 
         <!-- Kalo belum punya akun -->
         <p class="text-sm text-center text-gray-600 mt-4">

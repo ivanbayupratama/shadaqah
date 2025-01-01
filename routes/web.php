@@ -1,5 +1,8 @@
 <?php
 
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebController;
@@ -34,3 +37,33 @@ Route::get('/campaign/new', function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.login');
+
+Route::get('/auth/google/callback', function () {
+    try {
+        $user = Socialite::driver('google')->user();
+    } catch (\Exception $e) {
+        return redirect('/')->with('error', 'Login menggunakan Google gagal.');
+    }
+
+    //cari atau buat user dari informasi google
+    $existingUser = User::where('email', $user->email)->first();
+    if ($existingUser) {
+        Auth::login($existingUser);
+    } else {
+        $newUser = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'google_id' => $user->id,
+            'avatar' => $user->avatar,
+            'avatar_original' => $user->avatar_original,
+            // informasi tambahan 
+        ]);
+        Auth::login($newUser);
+    }
+
+    return redirect()->intended('/');
+})->name('google.callback');
