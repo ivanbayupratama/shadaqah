@@ -31,12 +31,14 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Kirim response berhasil
-        return response()->json([
-            'message' => 'User successfully registered!',
-            'user' => $user,
-        ], 201);
+        // Login pengguna setelah registrasi berhasil
+        Auth::login($user);
+
+        // Redirect ke halaman home dengan pesan sukses
+        return redirect('/login')->with('success', 'Registrasi berhasil!');
     }
+
+
 
     public function showLoginForm()
     {
