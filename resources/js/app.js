@@ -9,13 +9,9 @@ const app = createApp({
         CampaignPage,
         DonationForm,
     },
-    methods: {
-        redirectToLogin() {
-            window.location.href = "/login";
-        },
-    },
 });
 
+app.component("Home", Home);
 app.component("CampaignPage", CampaignPage);
 app.component("DonationForm", DonationForm); // Daftarkan komponen DonationForm
 app.mount("#app");

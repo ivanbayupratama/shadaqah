@@ -14,21 +14,21 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(callback: function (Middleware $middleware): void {
- dev-authloginregister
+
         $middleware->append(VerifyCsrfToken::class);
 
         // Menggunakan metode 'append' untuk menambahkan middleware dari branch `dev-campaignFeature`
         $middleware->append(\App\Http\Middleware\VerifyCsrfToken::class);
- Dev
+
 
         // Menggunakan middleware group dari branch `Dev`
         $middleware->group('api', [
             Illuminate\Routing\Middleware\SubstituteBindings::class,
- dev-authloginregister
+
             EnsureJsonResponse::class, // Middleware untuk memastikan respons JSON
 
             App\Http\Middleware\EnsureJsonResponse::class, // Middleware untuk memastikan respons JSON
- Dev
+
         ]);
 
         $middleware->group('web', [

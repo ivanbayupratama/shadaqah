@@ -4,7 +4,7 @@
 
 @section('content')
     <div id="app">
-        <DonationForm :campaign='@json($campaign)'></DonationForm>  <!-- Penulisan sesuai -->
+        <DonationForm :campaign='@json($campaign)'></DonationForm>
     </div>
 @endsection
 
