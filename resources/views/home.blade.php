@@ -8,23 +8,30 @@
     
     <div class="grid grid-cols-3 md:grid-cols-3 gap-2">
 @foreach($campaigns as $campaign)
-<div class="mt-6 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="mt-10 max-w-sm min-h-[28rem] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col transform transition-transform duration-200 hover:scale-105 hover:shadow-lg">
     <a href="#">
-        <img class="rounded-t-lg" src="{{ asset('storage/' . $campaign->image) }}" alt="" />
+        <img class="rounded-t-lg h-48 w-full object-cover" src="{{ asset('assets/banner/banner1.jpg') }}" alt="Campaign Image" />
     </a>
-    <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $campaign->title }}</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{  $campaign->description }}</p>
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Read more
-             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
+    <div class="flex-1 p-5 flex flex-col justify-between">
+        <div>
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate">{{ $campaign->title }}</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate">{{ $campaign->description }}</p>
+            <div class="mb-4 flex items-center">
+                <span class="text-sm text-gray-700 dark:text-gray-400">{{ $campaign->organization }}</span>
+            </div>
+        </div>
+        <a href="#" class="block w-full text-center px-5 py-3 mt-4 text-lg font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Donasi
         </a>
     </div>
 </div>
+
+
+
+
+
 @endforeach
 </div>
 @endsection
