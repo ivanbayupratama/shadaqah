@@ -13,7 +13,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonationController;
-use App\Http\Controllers\CampaignController;
+// use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\Admin\AdminController;
 
 // Rute umum
@@ -38,22 +38,18 @@ Route::post('/donate/{campaign}', [DonationController::class, 'donate'])->name('
 Route::get('/campaigns/{campaign}/donate', [DonationController::class, 'showDonationForm'])->name('donation.form');
 Route::post('/campaigns/{campaign}/donate', [DonationController::class, 'donate'])->name('donation.store');
 
-// Rute kampanye
-Route::get('/campaigns', [CampaignController::class, 'index']);
-Route::post('/campaigns', [CampaignController::class, 'store'])->middleware('auth');
-Route::get('/campaign/new', function () {
-    return view('campaign');
-});
-
 // Rute admin dengan middleware
-Route::prefix('admin')->middleware('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/beranda', [BerandaController::class, 'index']);
     Route::get('/beranda/{id}', [BerandaController::class, 'show']);
     Route::get('/beranda/{id}/pencairan-dana', [BerandaController::class, 'pencairan']);
     Route::get('/compaign', [CompaignController::class, 'index']);
     Route::get('/compaign/create', [CompaignController::class, 'create']);
-    Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
+
+    Route::post('/compaign/update', [CompaignController::class, 'edit']);
+    Route::post('/compaign/create', [CompaignController::class, 'store']);
+    // Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
     Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
     Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
     Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
