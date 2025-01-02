@@ -46,10 +46,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/beranda/{id}/pencairan-dana', [BerandaController::class, 'pencairan']);
     Route::get('/compaign', [CompaignController::class, 'index']);
     Route::get('/compaign/create', [CompaignController::class, 'create']);
-
-    Route::post('/compaign/update', [CompaignController::class, 'edit']);
     Route::post('/compaign/create', [CompaignController::class, 'store']);
-    // Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
+    Route::get('/compaign/{id}/edit', [CompaignController::class, 'edit']);
+    Route::get('/compaign/{id}/delete', [CompaignController::class, 'delete']);
+    Route::post('/compaign/update', [CompaignController::class, 'edit']);
+    Route::put('/compaign/update/{id}', [CompaignController::class, 'update']);
     Route::get('/riwayat-donasi', [RiwayatDonasiController::class, 'index']);
     Route::get('/riwayat-donasi/{id}', [RiwayatDonasiController::class, 'show']);
     Route::get('/riwayat-donasi/{id}/pencairan-dana', [RiwayatDonasiController::class, 'pencairan']);
