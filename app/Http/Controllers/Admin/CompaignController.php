@@ -26,20 +26,21 @@ class CompaignController extends Controller
     {
         $title = 'Campaign';
         $campaign = Campaign::findOrFail($id);
-        return view('admin.compaign.edit', compact('title', 'campaign')); // Perbaiki compact
+        return view('admin.compaign.edit', compact('title', 'campaign'));
     }
 
     public function update(Request $request, $id)
     {
+    $campaign = Campaign::findOrFail($id);
+
     $request->validate([
-        'title'       => 'required',
-        'description' => 'required',
-        'image'       => 'image',
+        'title'       => 'nullable|string',
+        'description' => 'nullable|string',
+        'image'       => 'image|nullable',
     ]);
 
-    $campaign = Campaign::findOrFail($id);
-    $campaign->title = $request->title;
-    $campaign->description = $request->description;
+    $campaign->title = $request->title ?: $campaign->title;
+    $campaign->description = $request->description ?: $campaign->description;
 
     if ($request->hasFile('image')) {
         $campaign->image = $request->file('image')->store('campaign_images', 'public');
@@ -47,8 +48,9 @@ class CompaignController extends Controller
 
     $campaign->save();
 
-    return redirect('admin/compaign')->with('success', 'Campaign berhasil di update.');
-    }
+    return redirect('admin/compaign')->with('success', 'Campaign berhasil diubah.');
+    }   
+
 
     public function delete($id)
     {
@@ -57,6 +59,17 @@ class CompaignController extends Controller
 
     return redirect('admin/compaign')->with('success', 'Campaign telah di hapus.');
     }
+
+    public function search(Request $request)
+    {
+    $query = $request->input('query');
+    $campaigns = Campaign::where('title', 'LIKE', "%{$query}%")
+                         ->orWhere('description', 'LIKE', "%{$query}%")
+                         ->get();
+
+    return response()->json($campaigns);
+    }
+
 
     public function store(Request $request)
     {
