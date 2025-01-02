@@ -28,7 +28,7 @@
                 <thead class="text-xs text-white uppercase bg-teal-800 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-4 py-3">No</th>
-                        <th scope="col" class="px-4 py-3">Nama Compaign</th>
+                        <th scope="col" class="px-4 py-3">Nama Campaign</th>
                         <th scope="col" class="px-4 py-3">Nama Perusahaan</th>
                         <th scope="col" class="px-4 py-3">Tanggal Target</th>
                         <th scope="col" class="px-4 py-3">Nama Penanggung Jawab</th>

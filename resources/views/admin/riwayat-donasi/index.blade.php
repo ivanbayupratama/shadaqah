@@ -22,7 +22,7 @@
                         <th scope="col" class="px-4 py-3">Nama Pendonasi</th>
                         <th scope="col" class="px-4 py-3">Jumlah Donasi</th>
                         <th scope="col" class="px-4 py-3">Tanggal Donasi</th>
-                        <th scope="col" class="px-4 py-3">Nama Compaign</th>
+                        <th scope="col" class="px-4 py-3">Nama Campaign</th>
                         <th scope="col" class="px-4 py-3">Nama Perusahaan</th>
                         <th scope="col" class="px-4 py-3">Aksi
                         </th>

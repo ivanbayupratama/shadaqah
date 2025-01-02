@@ -30,10 +30,10 @@
             </div>
         </div>
 
-        <h3 class="mb-4 text-3xl font-semibold dark:text-white text-blue-700 mt-6">About Compaign</h3>
+        <h3 class="mb-4 text-3xl font-semibold dark:text-white text-blue-700 mt-6">About Campaign</h3>
         <div class="grid grid-cols-12 gap-6">
             <div class="col-span-6 sm:col-span-4">
-                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Compaign</div>
+                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Campaign</div>
                 <div class="block text-sm">PT Hector</div>
             </div>
             <div class="col-span-6 sm:col-span-4">
@@ -57,7 +57,7 @@
                 <div class="block text-sm">hectorhugo359@gmail.com</div>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Tanggal Compaign</div>
+                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Tanggal Campaign</div>
                 <div class="block text-sm">12-04-2024</div>
             </div>
             <div class="col-span-6 sm:col-span-4">
