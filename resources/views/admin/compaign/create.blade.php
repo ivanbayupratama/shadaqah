@@ -2,23 +2,23 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     
     <div class="bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-center text-2xl font-semibold mb-2">Selamat datang di Shadaqah.com!</h1>
+        <h1 class="text-center text-2xl font-semibold mb-2">Selamat datang di Shadaqah </h1>
         <form id="form-wizard">
             <div id="step-1" class="step">
 
-                <p class="text-center text-gray-500 mb-6">Pengisian form terkait compaign</p>
+                <p class="text-center text-gray-500 mb-6">Pengisian form terkait campaign</p>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label for="nama_compaign" class="block text-sm font-medium text-gray-700">Nama Compaign</label>
-                        <input type="text" id="nama_compaign" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan nama compaign">
+                        <label for="nama_compaign" class="block text-sm font-medium text-gray-700">Nama Campaign</label>
+                        <input type="text" id="nama_compaign" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan nama campaign">
                     </div>
                     <div>
                         <label for="nama_perusahaan" class="block text-sm font-medium text-gray-700">Nama Perusahaan</label>
                         <input type="text" id="nama_perusahaan" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan nama perusahaan">
                     </div>
                     <div>
-                        <label for="email_perusahaan" class="block text-sm font-medium text-gray-700">Email Compaign</label>
-                        <input type="email" id="email_perusahaan" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan email compaign">
+                        <label for="email_perusahaan" class="block text-sm font-medium text-gray-700">Email Campaign</label>
+                        <input type="email" id="email_perusahaan" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan email campaign">
                     </div>
                     <div>
                         <label for="alamat_perusahaan" class="block text-sm font-medium text-gray-700">Alamat Perusahaan</label>
@@ -45,8 +45,8 @@
                         <input type="text" id="target_donasi" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan target donasi">
                     </div>
                     <div>
-                        <label for="no_rek_compaign" class="block text-sm font-medium text-gray-700">No Rekening Compaign</label>
-                        <input type="text" id="no_rek_compaign" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan no rekening compaign">
+                        <label for="no_rek_compaign" class="block text-sm font-medium text-gray-700">No Rekening Campaign</label>
+                        <input type="text" id="no_rek_compaign" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan no rekening campaign">
                     </div>
                 </div>
                 <div class="mt-6 flex justify-end">

@@ -30,10 +30,10 @@
             </div>
         </div>
 
-        <h3 class="mb-4 text-3xl font-semibold dark:text-white text-blue-700 mt-6">About Compaign</h3>
+        <h3 class="mb-4 text-3xl font-semibold dark:text-white text-blue-700 mt-6">About Campaign</h3>
         <div class="grid grid-cols-12 gap-6">
             <div class="col-span-6 sm:col-span-4">
-                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Compaign</div>
+                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Nama Campaign</div>
                 <div class="block text-sm">PT Hector</div>
             </div>
             <div class="col-span-6 sm:col-span-4">
@@ -57,7 +57,7 @@
                 <div class="block text-sm">hectorhugo359@gmail.com</div>
             </div>
             <div class="col-span-6 sm:col-span-4">
-                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Tanggal Compaign</div>
+                <div class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Tanggal Campaign</div>
                 <div class="block text-sm">12-04-2024</div>
             </div>
             <div class="col-span-6 sm:col-span-4">
@@ -97,7 +97,7 @@
                 <div class="block text-sm">Laki Laki</div>
             </div>
 
-            <div class="col-span-12 sm:col-full flex flex justify-between">
+            <div class="col-span-12 sm:col-full flex justify-between">
                 <div>
                     <a href="{{ url('admin/beranda') }}" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cancel</a>
                 </div>
