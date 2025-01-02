@@ -9,7 +9,7 @@
 
     <!-- Tulisan di kanan -->
     <div class="w-2/3">
-        <h1 class="text-2xl font-bold mb-4">Selamat datang di Shadaqah</h1>
+        <h1 class="text-2xl font-bold mb-4 text-[#1B3623]">Selamat datang di Shadaqah</h1>
         <p class="text-gray-700 leading-relaxed">
             Platform donasi yang menghubungkan kebaikan hati Anda dengan mereka yang membutuhkan.
             <br><br>
