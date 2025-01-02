@@ -2,7 +2,10 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     
     <div class="bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-center text-2xl font-semibold mb-2">Selamat datang di Shadaqah </h1>
+
+
+        <h1 class="text-center text-2xl font-semibold mb-2">Selamat datang di Shadaqah</h1>
+
         <form id="form-wizard">
             <div id="step-1" class="step">
 
@@ -86,7 +89,7 @@
                         <input type="date" id="tanggal_lahir_penanggung_jawab" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan tanggal lahir penanggung jawab">
                     </div>
                     <div>
-                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                        <label for="city" class="block text-sm font-medium text-gray-700">Kota</label>
                         <input type="text" id="city" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan city">
                     </div>
                     <div>
@@ -94,7 +97,7 @@
                         <input type="number" id="no_id" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan no id">
                     </div>
                     <div>
-                        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                        <label for="country" class="block text-sm font-medium text-gray-700">Negara</label>
                         <input type="text" id="country" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan country">
                     </div>
                 </div>

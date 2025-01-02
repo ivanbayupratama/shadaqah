@@ -86,7 +86,7 @@
                         <input type="date" id="tanggal_lahir_penanggung_jawab" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan tanggal lahir penanggung jawab" value="1990-01-25">
                     </div>
                     <div>
-                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                        <label for="city" class="block text-sm font-medium text-gray-700">Kota</label>
                         <input type="text" id="city" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan city" value="San Jose">
                     </div>
                     <div>
@@ -94,7 +94,7 @@
                         <input type="number" id="no_id" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan no id" value="455962">
                     </div>
                     <div>
-                        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                        <label for="country" class="block text-sm font-medium text-gray-700">Negara</label>
                         <input type="text" id="country" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan country" value="USA">
                     </div>
                 </div>
