@@ -145,7 +145,7 @@
                 </div>
                 <div class="mt-6 flex justify-between">
                     <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg" onclick="prevStep()">Back</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Update</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Save</button>
                 </div>
             </div>
         </form>

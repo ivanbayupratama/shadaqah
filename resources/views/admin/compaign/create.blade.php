@@ -2,7 +2,10 @@
     <x-slot:title>{{ $title }}</x-slot:title>
     
     <div class="bg-white p-6 rounded-lg shadow-md">
+
+
         <h1 class="text-center text-2xl font-semibold mb-2">Selamat datang di Shadaqah</h1>
+
         <form id="form-wizard">
             <div id="step-1" class="step">
 
@@ -45,8 +48,8 @@
                         <input type="text" id="target_donasi" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan target donasi">
                     </div>
                     <div>
-                        <label for="no_rek_compaign" class="block text-sm font-medium text-gray-700">No Rekening Compaign</label>
-                        <input type="text" id="no_rek_compaign" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan no rekening compaign">
+                        <label for="no_rek_compaign" class="block text-sm font-medium text-gray-700">No Rekening Campaign</label>
+                        <input type="text" id="no_rek_compaign" class="mt-1 p-2 border border-gray-300 rounded-lg w-full" placeholder="Masukkan no rekening campaign">
                     </div>
                 </div>
                 <div class="mt-6 flex justify-end">
