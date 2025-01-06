@@ -11,14 +11,11 @@
 <body>
     <x-Admin.Navbar></x-Admin.Navbar>
     <x-Admin.Sidebar></x-Admin.Sidebar>
-    <main>
+    <main class="ml-64"> <!-- Tambahkan margin kiri pada main -->
         <div class="mx-auto max-w-12xl px-4 py-0 sm:px-6 lg:px-8">
-            <div class="sm:ml-64">
-                <div class="border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
-                    <x-admin.header>{{ $title }}</x-admin.header>
-                    {{ $slot }}
-                </div>
-                </div>
+            <div class="border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
+                <x-admin.header>{{ $title }}</x-admin.header>
+                {{ $slot }}
             </div>
         </div>
     </main>

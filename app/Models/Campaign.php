@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Donation;  // Tambahkan baris ini untuk mengimpor model Donation
+// use App\Models\Donation;  // Tambahkan baris ini untuk mengimpor model Donation
 
 class Campaign extends Model
 {

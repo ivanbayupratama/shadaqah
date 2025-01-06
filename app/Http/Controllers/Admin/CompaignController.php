@@ -31,43 +31,43 @@ class CompaignController extends Controller
 
     public function update(Request $request, $id)
     {
-    $campaign = Campaign::findOrFail($id);
+        $campaign = Campaign::findOrFail($id);
 
-    $request->validate([
-        'title'       => 'nullable|string',
-        'description' => 'nullable|string',
-        'image'       => 'image|nullable',
-    ]);
+        $request->validate([
+            'title'       => 'nullable|string',
+            'description' => 'nullable|string',
+            'image'       => 'image|nullable',
+        ]);
 
-    $campaign->title = $request->title ?: $campaign->title;
-    $campaign->description = $request->description ?: $campaign->description;
+        $campaign->title = $request->title ?: $campaign->title;
+        $campaign->description = $request->description ?: $campaign->description;
 
-    if ($request->hasFile('image')) {
-        $campaign->image = $request->file('image')->store('campaign_images', 'public');
+        if ($request->hasFile('image')) {
+            $campaign->image = $request->file('image')->store('campaign_images', 'public');
+        }
+
+        $campaign->save();
+
+        return redirect('admin/compaign')->with('success', 'Campaign berhasil diubah.');
     }
-
-    $campaign->save();
-
-    return redirect('admin/compaign')->with('success', 'Campaign berhasil diubah.');
-    }   
 
 
     public function delete($id)
     {
-    $campaign = Campaign::findOrFail($id);
-    $campaign->delete();
+        $campaign = Campaign::findOrFail($id);
+        $campaign->delete();
 
-    return redirect('admin/compaign')->with('success', 'Campaign telah di hapus.');
+        return redirect('admin/compaign')->with('success', 'Campaign telah di hapus.');
     }
 
     public function search(Request $request)
     {
-    $query = $request->input('query');
-    $campaigns = Campaign::where('title', 'LIKE', "%{$query}%")
-                         ->orWhere('description', 'LIKE', "%{$query}%")
-                         ->get();
+        $query = $request->input('query');
+        $campaigns = Campaign::where('title', 'LIKE', "%{$query}%")
+            ->orWhere('description', 'LIKE', "%{$query}%")
+            ->get();
 
-    return response()->json($campaigns);
+        return response()->json($campaigns);
     }
 
 
