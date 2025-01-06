@@ -13,8 +13,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DonationController;
-// use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DataUsersController;
 
 // Rute umum
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -34,9 +34,9 @@ Route::get('/login/google', [AuthController::class, 'redirectToGoogle'])->name('
 Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('login.google.callback');
 
 // Rute donasi
-Route::post('/donate/{campaign}', [DonationController::class, 'donate'])->name('donate');
-Route::get('/campaigns/{campaign}/donate', [DonationController::class, 'showDonationForm'])->name('donation.form');
-Route::post('/campaigns/{campaign}/donate', [DonationController::class, 'donate'])->name('donation.store');
+// Route::post('/donate/{campaign}', [DonationController::class, 'donate'])->name('donate');
+// Route::get('/campaigns/{campaign}/donate', [DonationController::class, 'showDonationForm'])->name('donation.form');
+// Route::post('/campaigns/{campaign}/donate', [DonationController::class, 'donate'])->name('donation.store');
 
 // Rute admin dengan middleware
 Route::prefix('admin')->middleware(['auth'])->group(function () {
@@ -59,7 +59,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/pencairan-dana/metode-pencairan', [PencairanDanaController::class, 'pencairan']);
     Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'index']);
     Route::get('/layanan-pengguna/{id}', [LayananPenggunaController::class, 'show']);
+    Route::get('/dataUsers', [DataUsersController::class, 'index'])->name('admin.dataUsers.index');
 });
+
 
 // Rute callback autentikasi Google yang tidak terlindungi
 Route::get('/auth/google', function () {
