@@ -19,9 +19,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
         'provider',
         'provider_id',
         'avatar',
+
     ];
 
     // mnyembunyikan kolom tertentu saat data dikembalikan sebagai JSON
