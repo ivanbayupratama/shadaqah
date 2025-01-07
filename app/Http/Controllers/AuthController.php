@@ -38,8 +38,6 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'Registrasi berhasil!');
     }
 
-
-
     public function showLoginForm()
     {
         return view('login');
@@ -53,18 +51,20 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
             $user = Auth::user();
             if ($user->role == 'admin') {
-                // Redirect to admin dashboard
-                return redirect()->intended('/admin/beranda');
+                // Redirect to admin dashboard with success message
+                return redirect()->intended('/admin/beranda')->with('success', 'Login berhasil! Selamat datang, Admin.');
             } else {
-                // Redirect to home page
-                return redirect()->intended('/');
+                // Redirect to home page with success message
+                return redirect()->intended('/')->with('success', 'Login berhasil! Selamat datang.');
             }
         }
 
         // Authentication failed, redirect back with error message
-        return redirect()->back()->withErrors(['login' => 'Invalid credentials']);
+        return redirect()->back()->withErrors(['login' => 'Invalid credentials'])->withInput();
     }
 
     public function redirectToGoogle()
