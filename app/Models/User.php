@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasFactory;
 
     //jika ingin menyertakan nama tabel, pastikan pakai 'users'
     protected $table = 'users';

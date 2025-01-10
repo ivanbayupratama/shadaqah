@@ -62,8 +62,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dataUsers', [DataUsersController::class, 'index'])->name('admin.dataUsers.index');
 });
 
-// Rute data User
+// Rute PDF Reporting
 Route::get('/admin/dataUsers/pdf', [DataUsersController::class, 'exportPdf'])->name('admin.dataUsers.pdf');
+Route::get('/admin/compaigns/pdf', [CompaignController::class, 'exportPdf'])->name('admin.campaign.pdf');
 
 
 // Rute callback autentikasi Google yang tidak terlindungi

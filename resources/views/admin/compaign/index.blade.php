@@ -51,6 +51,9 @@
             </table>
         </div>
     </div>
+    <div class="flex justify-end p-4">
+        <a href="{{ route('admin.campaign.pdf') }}" class="bg-teal-800 text-white px-4 py-2 rounded-md hover:bg-teal-700">Export PDF</a>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

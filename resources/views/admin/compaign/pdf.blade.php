@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Data Users</title>
+    <title>Data Campaign</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,23 +21,23 @@
     </style>
 </head>
 <body>
-    <h2>Data Users</h2>
+    <h2>Data Campaign</h2>
     <table>
         <thead>
             <tr>
                 <th>No</th>
-                <th>Profile Picture</th>
-                <th>Nama User</th>
-                <th>Email</th>
+                <th>Gambar Kampanye</th>
+                <th>Judul Kampanye</th>
+                <th>Deskripsi Kampanye</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($users as $key => $user)
+            @foreach($campaigns as $key => $campaign)
             <tr>
                 <td>{{ $key + 1 }}</td>
-                <td><img src="{{ storage_path('app/public/' . $user->profile_picture) }}" width="50" alt=""></td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
+                <td><img src="{{ storage_path('app/public/' . $campaign->image) }}" width="50" alt=""></td>
+                <td>{{ $campaign->title }}</td>
+                <td>{{ $campaign->description }}</td>
             </tr>
             @endforeach
         </tbody>
