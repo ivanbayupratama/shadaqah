@@ -24,4 +24,7 @@
             </table>
         </div>
     </div>
+    <div class="flex justify-end p-4">
+        <a href="{{ route('admin.dataUsers.pdf') }}" class="bg-teal-800 text-white px-4 py-2 rounded-md hover:bg-teal-700">Export PDF</a>
+    </div>
 </x-Admin.layout>
