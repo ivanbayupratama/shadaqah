@@ -10,7 +10,7 @@
 @foreach($campaigns as $campaign)
 <div class="mt-10 max-w-sm min-h-[28rem] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col transform transition-transform duration-200 hover:scale-105 hover:shadow-lg">
     <a href="#">
-        <img class="rounded-t-lg h-48 w-full object-cover" src="{{ asset('assets/banner/banner1.jpg') }}" alt="Campaign Image" />
+        <img class="rounded-t-lg h-48 w-full object-cover" src="{{ asset('storage/' . $campaign->image) }}" alt="Campaign Image" />
     </a>
     <div class="flex-1 p-5 flex flex-col justify-between">
         <div>
