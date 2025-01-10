@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class CompaignController extends Controller
 {
@@ -93,4 +94,12 @@ class CompaignController extends Controller
 
         return redirect('admin/compaign')->with('success', 'Campaign berhasil dibuat.');
     }
+
+    public function exportPdf()
+    {
+        $campaigns = Campaign::all();
+        $pdf = PDF::loadView('admin.compaign.pdf', compact('campaigns'));
+        return $pdf->download('data_campaigns.pdf');
+    }
 }
+
