@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Models\Donation;  // Tambahkan baris ini untuk mengimpor model Donation
 
 class Campaign extends Model
 {
@@ -15,8 +14,8 @@ class Campaign extends Model
         'description',
         'image',
         'user_id',
-        // 'target_amount',
-        // 'collected_amount'
+        'target_amount',
+        'collected_amount',
     ];
 
     public function donations()

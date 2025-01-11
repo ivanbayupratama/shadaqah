@@ -7,6 +7,7 @@ use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use Illuminate\Support\Facades\Cache;
 
 class CompaignController extends Controller
 {
@@ -35,13 +36,22 @@ class CompaignController extends Controller
         $campaign = Campaign::findOrFail($id);
 
         $request->validate([
-            'title'       => 'nullable|string',
-            'description' => 'nullable|string',
-            'image'       => 'image|nullable',
+            'title'       => 'required',
+            'description' => 'required',
+            'image'       => 'nullable|image',
+            'target_amount' => 'required|numeric|min:100000',
+        ], [
+            'title.required' => 'Judul harus diisi.',
+            'description.required' => 'Deskripsi harus diisi.',
+            'image.image' => 'File yang diunggah harus berupa gambar.',
+            'target_amount.required' => 'Target dana harus diisi.',
+            'target_amount.numeric' => 'Target dana harus berupa angka.',
+            'target_amount.min' => 'Target dana minimal Rp100.000.',
         ]);
 
-        $campaign->title = $request->title ?: $campaign->title;
-        $campaign->description = $request->description ?: $campaign->description;
+        $campaign->title = $request->title;
+        $campaign->description = $request->description;
+        $campaign->target_amount = $request->target_amount;
 
         if ($request->hasFile('image')) {
             $campaign->image = $request->file('image')->store('campaign_images', 'public');
@@ -71,19 +81,29 @@ class CompaignController extends Controller
         return response()->json($campaigns);
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
-            'title'         => 'required',
-            'description'   => 'required',
-            'image'         => 'required|image',
+            'title'       => 'required',
+            'description' => 'required',
+            'image'       => 'required|image',
+            'target_amount' => 'required|numeric|min:100000',
+        ], [
+            'title.required' => 'Judul harus diisi.',
+            'description.required' => 'Deskripsi harus diisi.',
+            'image.required' => 'Gambar harus diunggah.',
+            'image.image' => 'File yang diunggah harus gambar.',
+            'target_amount.required' => 'Target dana harus diisi.',
+            'target_amount.numeric' => 'Target dana harus berupa angka.',
+            'target_amount.min' => 'Target dana minimal Rp100.000.',
         ]);
 
         $campaign = new Campaign();
         $campaign->title = $request->title;
         $campaign->description = $request->description;
-        $campaign->user_id = auth()->id(); // Menggunakan auth()->id() dengan benar
+        $campaign->user_id = auth()->id();
+        $campaign->target_amount = $request->target_amount;
+        $campaign->collected_amount = 0.00;
 
 
         if ($request->hasFile('image')) {
@@ -102,4 +122,3 @@ class CompaignController extends Controller
         return $pdf->download('data_campaigns.pdf');
     }
 }
-
