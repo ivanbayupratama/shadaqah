@@ -1,49 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi</title>
-    @vite('resources/css/app.css') <!-- Sesuaikan jika menggunakan Laravel Vite -->
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-sm">
-        <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Registrasi</h2>
-        <form method ="POST" action="/register" class="space-y-4">
-            @csrf
-            <!-- Nama Lengkap -->
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                <input type="text" id="name" name="name" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Nama Anda" required>
-            </div>
+<x-layout.app>
+    <x-slot:title>Registration</x-slot:title>
 
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="email" name="email" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="@gmail.com" required>
-            </div>
+<div class="min-h-screen  bg-teal-800  flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 
-            <!-- Password -->
-            <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="password" name="password" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Password Anda" required>
-            </div>
+       <div class="bg-white  shadow-lg  rounded-lg  p-6  sm:w-full md:max-w-md  w-10/12 mx-auto   "  >
 
-            <!-- Konfirmasi Password -->
-            <div>
-                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Konfirmasi Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Ulangi Password Anda" required>
-            </div>
+              
+       <div class=" text-center mb-6   ">
 
-            <!-- Tombol Registrasi -->
-            <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Daftar</button>
-        </form>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white ">Registrasi</h2>
 
-        <!-- Link ke Login -->
-        <p class="text-sm text-center text-gray-600 mt-4">
-            Sudah punya akun? 
-            <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login di sini</a>.
-        </p>
-    </div>
-</body>
-</html>
+                    
+              </div>
+         <form action="{{ route('register') }}"  method="post"    class="space-y-4">
+
+               @csrf
+
+
+               <div>
+
+                     <label  for="name" class="block text-sm  font-medium text-gray-700 dark:text-gray-300"> Nama Lengkap  </label>
+
+                    <div class="mt-1">
+
+                       <input type="text"  id="name"   name="name" class="p-2    border  border-gray-300 dark:border-gray-700   rounded-md  w-full  focus:ring-blue-500 focus:border-blue-500  dark:bg-gray-800 dark:text-white "     placeholder="  Nama Anda " required>
+                                  </div>
+                                 </div>
+
+                        <div>
+
+                            <label for="email"   class="block  text-sm   font-medium  text-gray-700 dark:text-gray-300" > Email </label>
+
+                                <div class="mt-1">
+
+                          <input  type="email"    name="email"    id="email"   class="p-2   border  border-gray-300 dark:border-gray-700   rounded-md  w-full focus:ring-blue-500 focus:border-blue-500   dark:bg-gray-800 dark:text-white  "    placeholder="@gmail.com"    required>
+                       </div>
+                         </div>
+
+                          <div>
+
+                               <label for="password"    class="block  text-sm  font-medium  text-gray-700 dark:text-gray-300" > Password </label>
+                                   <div   class="mt-1"  >
+
+                          <input  type="password"     name="password"    id="password"   class="p-2  border border-gray-300 dark:border-gray-700   rounded-md  w-full focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white "  placeholder="   Password Anda " required>
+                                </div>
+                           </div>
+
+                   <div>
+
+                              <label for="password_confirmation"  class="block  text-sm font-medium  text-gray-700  dark:text-gray-300">Konfirmasi Password</label>
+
+                      <div class="mt-1">
+
+                            <input type="password"   name="password_confirmation" id="password_confirmation"   class="p-2 border border-gray-300 dark:border-gray-700   rounded-md  w-full   focus:ring-blue-500 focus:border-blue-500   dark:bg-gray-800 dark:text-white  " placeholder="  Ulangi Password Anda" required>
+                            </div>
+                  </div>
+
+              <div   class="mt-8">
+                  <button  type="submit"   class=" w-full   py-2  px-4  bg-green-600 rounded-md text-white   hover:bg-green-700 transition-colors" >Daftar</button>
+              </div>
+
+
+              
+               
+                <div  class="text-center   mt-4  text-gray-500 dark:text-gray-400 ">
+                                   <span>  Sudah punya akun?  <a  href="{{ route('login.show') }}"  class="font-medium  hover:text-blue-500 ">Login di sini.</a></span>
+
+              </div>
+
+               </form>
+              </div>
+
+
+ </div>
+
+ </x-layout.app>

@@ -31,16 +31,24 @@
                         <th scope="col" class="px-4 py-3">Gambar Kampanye</th>
                         <th scope="col" class="px-4 py-3">Judul Kampanye</th>
                         <th scope="col" class="px-4 py-3">Deskripsi Kampanye</th>
+                        <th scope="col" class="px-4 py-3">Target Donasi</th>
+                        <th scope="col" class="px-4 py-3">Dana Terkumpul</th>
                         <th scope="col" class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="campaigns-table">
+                    @php
+                        $campaigns = App\Models\Campaign::all();
+                    @endphp
                     @foreach($campaigns as $key => $campaign)
                     <tr class="border-b dark:border-gray-700">
                         <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{  $key+1 }}</th>
                         <td class="px-4 py-3"><img src="{{ asset('storage/' . $campaign->image) }}" class="w-8 h-10" alt=""></td>
                         <td class="px-4 py-3">{{ $campaign->title }}</td>
                         <td class="px-4 py-3">{{  $campaign->description }}</td>
+                        <td class="px-4 py-3">Rp{{ number_format($campaign->target_amount, 0, ',', '.') }}</td>
+                        <td class="px-4 py-3">Rp{{ number_format($campaign->collected_amount, 0, ',', '.') }}</td>
+
                         <td class="px-4 py-3 flex items-center">
                         <a href="{{ url('admin/compaign/' . $campaign->id . '/edit') }}" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Edit</a>
                         <a href="{{ url('admin/compaign/' . $campaign->id . '/delete') }}" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Delete</a>
@@ -68,7 +76,7 @@
                         $('#campaigns-table').html('');
                         if (data.length > 0) {
                             data.forEach(function(campaign, index) {
-                                $('#campaigns-table').append('<tr class="border-b dark:border-gray-700"><th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">' + (index + 1) + '</th><td class="px-4 py-3"><img src="{{ asset("storage/") }}/' + campaign.image + '" class="w-8 h-10" alt=""></td><td class="px-4 py-3">' + campaign.title + '</td><td class="px-4 py-3">' + campaign.description + '</td><td class="px-4 py-3 flex items-center"><a href="{{ url("admin/compaign/") }}/' + campaign.id + '/edit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Edit</a><a href="{{ url("admin/compaign/") }}/' + campaign.id + '/delete" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Delete</a></td></tr>');
+                                $('#campaigns-table').append('<tr class="border-b dark:border-gray-700"><th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">' + (index + 1) + '</th><td class="px-4 py-3"><img src="{{ asset("storage/") }}/' + campaign.image + '" class="w-8 h-10" alt=""></td><td class="px-4 py-3">' + campaign.title + '</td><td class="px-4 py-3">' + campaign.description + '</td><td class="px-4 py-3">Rp' + campaign.target_amount + '</td><td class="px-4 py-3">Rp' + campaign.collected_amount + '</td><td class="px-4 py-3 flex items-center"><a href="{{ url("admin/compaign/") }}/' + campaign.id + '/edit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Edit</a><a href="{{ url("admin/compaign/") }}/' + campaign.id + '/delete" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-blue-500 focus:outline-none bg-white rounded-full border border-blue-500 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Delete</a></td></tr>');
                             });
                         } else {
                             $('#campaigns-table').append('<tr><td colspan="5" class="px-4 py-3 text-center">No campaigns found</td></tr>');
