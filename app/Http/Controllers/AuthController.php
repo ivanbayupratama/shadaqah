@@ -34,7 +34,7 @@ class AuthController extends Controller
         // Login pengguna setelah registrasi berhasil
         Auth::login($user);
 
-        // Redirect ke halaman home dengan pesan sukses
+        // Redirect ke login page with success message
         return redirect('/login')->with('success', 'Registrasi berhasil!');
     }
 
@@ -50,22 +50,31 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+
         if (Auth::attempt($credentials)) {
+            // regenerate session when login was successful
             $request->session()->regenerate();
 
+            //Retrieve current user
             $user = Auth::user();
+
+            // check user roles and redirect to according dashboard
             if ($user->role == 'admin') {
+
                 // Redirect to admin dashboard with success message
-                return redirect()->intended('/admin/beranda')->with('success', 'Login berhasil! Selamat datang, Admin.');
+                return redirect()->intended('/admin/beranda')->with('success', 'Selamat datang Admin!');
             } else {
                 // Redirect to home page with success message
-                return redirect()->intended('/')->with('success', 'Login berhasil! Selamat datang.');
+                return redirect()->intended('/')->with('success', 'Selamat Datang!');
             }
         }
 
-        // Authentication failed, redirect back with error message
-        return redirect()->back()->withErrors(['login' => 'Invalid credentials'])->withInput();
+
+        // Authentication failed, redirect back with error message (with errors key named 'login')
+        return redirect()->back()->withErrors(['login' => 'Email or Password was incorrect'])->withInput();
     }
+
+
 
     public function redirectToGoogle()
     {
@@ -93,7 +102,7 @@ class AuthController extends Controller
 
         Auth::login($authUser, true);
 
-        return redirect()->intended('/');
+        return redirect()->intended('/')->with('success', 'Login Success!');
     }
 
     public function logout(Request $request)
