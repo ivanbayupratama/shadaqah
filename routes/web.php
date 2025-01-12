@@ -30,13 +30,13 @@ Route::get('/register', [AuthController::class, 'showRegistForm'])->name('regist
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 // Rute login menggunakan Google
-Route::get('/login/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
-Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('login.google.callback');
+Route::get('/login/google', [AuthController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
 
 // Rute donasi
 // Route::post('/donate/{campaign}', [DonationController::class, 'donate'])->name('donate');
-// Route::get('/campaigns/{campaign}/donate', [DonationController::class, 'showDonationForm'])->name('donation.form');
-// Route::post('/campaigns/{campaign}/donate', [DonationController::class, 'donate'])->name('donation.store');
+Route::get('/campaigns/{campaign}/donate', [DonationController::class, 'showDonationForm'])->name('donation.form');
+Route::post('/campaigns/{campaign}/donate', [DonationController::class, 'donate'])->name('donation.store');
 
 // Rute admin dengan middleware
 Route::prefix('admin')->middleware(['auth'])->group(function () {
@@ -78,21 +78,19 @@ Route::get('/auth/google/callback', function () {
         return redirect('/')->with('error', 'Login menggunakan Google gagal.');
     }
 
-    // Cari atau buat user dari informasi Google
-    $existingUser = User::where('email', $user->email)->first();
-    if ($existingUser) {
-        Auth::login($existingUser);
-    } else {
-        $newUser = User::create([
-            'name' => $user->name,
-            'email' => $user->email,
-            'google_id' => $user->id,
-            'avatar' => $user->avatar,
-            'avatar_original' => $user->avatar_original,
-            // Informasi tambahan
-        ]);
-        Auth::login($newUser);
-    }
+    // Cari atau buat user berdasarkan informasi Google
+    $authUser = User::firstOrCreate([
+        'email' => $user->email,
+    ], [
+        'name' => $user->name,
+        'provider' => 'google',
+        'provider_id' => $user->id,
+        'avatar' => $user->avatar,
+        'avatar_original' => $user->avatar_original,
+        // Informasi tambahan
+    ]);
+
+    Auth::login($authUser, true);
 
     return redirect()->intended('/');
 })->name('google.callback');

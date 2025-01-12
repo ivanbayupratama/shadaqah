@@ -43,9 +43,9 @@
             <div>
                 <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Login</button>
             </div>
-            <button type="button" class="w-full bg-white dark:bg-gray-200 py-2 px-4 rounded-md border border-gray-300 text-blue-700 dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-300 transition-colors">
-                Login dengan Google
-            </button>
+           <a href="{{ route('google.login') }}"  class="w-full bg-white dark:bg-gray-200 py-2 px-4 rounded-md border border-gray-300 text-blue-700 dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-300 transition-colors block text-center">
+                 Login dengan Google
+            </a>
             <div class="text-center mt-4 text-gray-500 dark:text-gray-400">
                 <span>Belum punya akun? <a href="{{ route('register.show') }}" class="hover:text-blue-500 font-medium">Daftar di sini.</a></span>
             </div>
