@@ -1,8 +1,8 @@
 @extends('layout.app')
 
-    @section('title', 'Home')
+@section('title', 'Home')
 
-    @section('content')
+@section('content')
 
      <div class="container mx-auto mt-8  px-4  ">
            
@@ -55,61 +55,76 @@
            <h2 class="text-2xl font-semibold text-center text-gray-700 mb-8 ">Daftar Campaign</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-           @php
-        $campaigns = App\Models\Campaign::all();
-    @endphp
+           
             @foreach($campaigns as $campaign)
-
-    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col min-h-[380px] transform transition-transform duration-200 hover:scale-[1.025]">
-          <img src="{{ asset('storage/' . $campaign->image) }}" alt="Campaign Image" class="w-full h-40 object-cover rounded-t-lg mb-4">
-
-     <div class="flex flex-col h-full">
-    <h2 class="text-xl font-semibold mb-3">{{ $campaign->title }}</h2>
-    <p class="text-gray-700 mb-4 leading-relaxed flex-grow">
-             {{ Str::limit($campaign->description, 120) }}
-         </p>
+          
+         
+  <div class="bg-white rounded-lg shadow-md p-6 flex flex-col min-h-[380px] transform transition-transform duration-200 hover:scale-[1.025]">
+         <div class="relative w-full h-40 mb-4 overflow-hidden rounded-t-lg bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $campaign->image) }}')"></div>
 
 
-         <div class="mb-4 space-y-2">
-                   <div class="flex justify-between items-center">
-               <span class="text-sm font-medium text-gray-700">Target: Rp{{ number_format($campaign->target_amount, 0, ',', '.') }}</span>
-             <span class="text-sm font-medium text-gray-700">Terkumpul: Rp{{ number_format($campaign->collected_amount, 0, ',', '.') }}</span>
-            </div>
+     <div class="flex flex-col h-full" >
+        <h2   class="text-xl  font-semibold  mb-1" >{{ $campaign->title }}</h2>
 
-         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%" id="progress-bar-{{ $campaign->id }}"></div>
-         </div>
-           <div class="text-sm font-semibold text-gray-700" id="percentage-{{ $campaign->id }}">0.00%</div>
-     </div>
+        <p  class="text-gray-700 leading-relaxed text-sm mb-4 flex-grow">
+            {{ Str::limit($campaign->description, 120) }}
+        </p>
+          <div class="mb-4 space-y-2">
+                     <div  class="flex justify-between items-center" >
+                                    <span class="text-sm   font-medium text-gray-700" >Target: Rp{{ number_format($campaign->target_amount, 0, ',', '.') }}</span>
 
-           <a href="{{ url('/campaigns/' . $campaign->id . '/donate') }}" class="mt-4 inline-block w-full bg-green-400 text-white py-2 rounded-lg text-center hover:bg-green-500">Donasi</a>
-              </div>
+                <span   class="text-sm   font-medium   text-gray-700">Terkumpul: Rp{{ number_format($campaign->collected_amount, 0, ',', '.') }}</span>
+                      </div>
+
+                        
+                    <div  class="w-full  bg-gray-200  rounded-full  h-2.5   dark:bg-gray-700">
+
+                    <div    class="bg-blue-600    h-2.5   rounded-full"  style="width:
+                       @if($campaign->target_amount > 0)
+                            {{ ($campaign->collected_amount / $campaign->target_amount) * 100 }}%
+                          @else
+                             0%
+                           @endif"></div>
+              
+                     </div>
+
+                 <div class="text-sm font-semibold  text-gray-700"  id="percentage-{{ $campaign->id }}" >
+                     @if($campaign->target_amount > 0)
+                         {{ number_format(($campaign->collected_amount / $campaign->target_amount) * 100, 2) }}%
+                         @else
+                              0.00%
+                      @endif
+                   </div>
+             </div>
+
+          <a href="{{ url('/campaigns/' . $campaign->id . '/donate') }}" class="mt-4 inline-block w-full bg-green-400 text-white py-2 rounded-lg text-center hover:bg-green-500">Donasi</a>
+
+   </div>
 
   </div>
 
+
       <script>
           document.addEventListener('DOMContentLoaded', function () {
-  const campaignId = "{{ $campaign->id }}";
-  const targetAmount = parseFloat("{{ $campaign->target_amount }}");
-    const collectedAmount = parseFloat("{{ $campaign->collected_amount }}");
-  const progressBar = document.getElementById('progress-bar-' + campaignId);
- const percentageDisplay = document.getElementById('percentage-' + campaignId);
+        const campaignId = "{{ $campaign->id }}";
+        const targetAmount = parseFloat("{{ $campaign->target_amount }}");
+          const collectedAmount = parseFloat("{{ $campaign->collected_amount }}");
+          const progressBar = document.getElementById('progress-bar-' + campaignId);
+        const percentageDisplay = document.getElementById('percentage-' + campaignId);
         let percentage = 0;
-  if (targetAmount > 0) {
-    percentage = (collectedAmount / targetAmount) * 100;
- }
+        if (targetAmount > 0) {
+          percentage = (collectedAmount / targetAmount) * 100;
+         }
 
-    progressBar.style.width = percentage + '%';
-   percentageDisplay.textContent = percentage.toFixed(2) + '%';
+            progressBar.style.width = percentage + '%';
+           percentageDisplay.textContent = percentage.toFixed(2) + '%';
 
- });
+          });
 
-    </script>
+      </script>
 
         @endforeach
-
  </div>
-
 
       </div>
 
